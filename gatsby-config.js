@@ -3,17 +3,44 @@ module.exports = {
     title: `curriculum-vitae`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", {
+  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", 
+  {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/icon.png"
+      "icon": "src/assets/images/icon.png"
     }
-  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+  }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", 
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
-      "name": "images",
-      "path": "./src/images/"
+      name: 'images',
+      path: './src/assets/images/',
     },
-    __key: "images"
-  }]
+    __key: 'images',
+  },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `styles`,
+      path: `${__dirname}/src/assets/css`,
+    },
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'pages',
+      path: './src/pages/',
+    },
+    __key: 'pages',
+  },
+  {
+    resolve: 'gatsby-plugin-react-svg',
+    options: {
+      rule: {
+        include: /svg/
+      }
+    }
+  }
+
+]
 };
