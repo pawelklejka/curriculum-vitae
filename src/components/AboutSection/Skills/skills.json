@@ -1,0 +1,20 @@
+[
+    {"name": "JavaScript"},
+    {"name": "React"},
+    {"name": "GSAP"},
+    {"name": "ThreeJS"},
+    {"name": "React Three Fiber"},
+    {"name": "HTML"},
+    {"name": "CSS"},
+    {"name": "Java"},
+    {"name": "Spring"},
+    {"name": "MongoDB"},
+    {"name": "RabbitMQ"},
+    {"name": "Eureka"},
+    {"name": "InfluxDB"},
+    {"name": "Prometheus"},
+    {"name": "Grafana"},
+    {"name": "MySQL"},
+    {"name": "Figma"}
+
+]

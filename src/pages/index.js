@@ -1,13 +1,16 @@
 import * as React from "react"
 import "../assets/css/main.css"
-import GlassBoard from "../components/GlassBoard/GlassBoard"
-import NeonBlobs from "../components/NeonBlobs/NeonBlobs"
-// markup
+import AboutSection from "../components/AboutSection/AboutSection"
+import MainSection from "../components/MainSection/MainSection"
+import PortfolioPopout from "../components/PortfolioSection/PortfolioPopout/PortfolioPopout"
+import PortfolioSection from "../components/PortfolioSection/PortfolioSection"
+
 const IndexPage = () => {
   return (
     <>
-      <NeonBlobs />
-      <GlassBoard />
+      <MainSection />
+      <AboutSection />
+      <PortfolioSection />
     </>
 
 

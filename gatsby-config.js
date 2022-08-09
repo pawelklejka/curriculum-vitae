@@ -3,7 +3,7 @@ module.exports = {
     title: `curriculum-vitae`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", 
+  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", `gatsby-plugin-fontawesome-css`,
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
