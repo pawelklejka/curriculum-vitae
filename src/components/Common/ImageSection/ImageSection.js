@@ -1,6 +1,6 @@
 import React from 'react'
-import CVImage from '../../assets/images/cv2.png'
-import ReactSVG from '../../assets/svg/react-icon.svg'
+import CVImage from '../../../assets/images/cv2.png'
+import ReactSVG from '../../../assets/svg/react-icon.svg'
 
 function ImageSection(props) {
   return (

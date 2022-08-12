@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import React from 'react'
 
 function TextSection() {
@@ -6,8 +7,8 @@ function TextSection() {
         <p>Hello, I'm</p>
         <h1>Paweł Klejka</h1>
         <h2> Master of Computer Science, Software Developer, Graphic Designer</h2>
-        <a href='#' className='btn btn-primary'>About Me</a>
-        <a href='#' className='btn btn-secondary'>My Projects</a>
+        <Link to='/about' className='btn btn-primary'>About Me</Link>
+        <Link to='/portfolio' className='btn btn-secondary'>My Projects</Link>
     </div>
   )
 }

@@ -54,7 +54,6 @@ body{
     align-items: center;
     justify-content: center;
     background-attachment: fixed;
-
 }
 
 
@@ -83,30 +82,40 @@ section::before{
   width: 100%;
   height: 100%;
   content: '';
-  background:   linear-gradient(135deg, var(--neon-purple) 5%, rgba(155, 111, 238, 0.05) 30%, rgba(123, 127, 234, 0.05) 70%, var(--neon-blue) 105%) border-box;
+  background: linear-gradient(135deg, var(--neon-purple) 5%, rgba(155, 111, 238, 0.05) 30%, rgba(123, 127, 234, 0.05) 70%, var(--neon-blue) 105%) border-box;
   border: 6px solid transparent;
   border-radius: inherit;
   mask: linear-gradient(white, white) padding-box,
         linear-gradient(white, white);
   mask-composite: exclude;
-  
+  z-index: -1;
+  animation: opacityAnimation 6s linear infinite;
 }
 
-
+@keyframes opacityAnimation {
+  0%, 100%{
+    opacity: 0.3;
+  }
+  50%{
+    opacity: 1;
+  }
+}
 
 
 section{
   position: relative;
+  flex-direction: column;
   max-width: 73%;
   max-height: 80%;
   min-height: 73vh;
   min-width: 62vw;
   margin: auto;
   background: linear-gradient(110.52deg, rgba(58, 129, 191, 0.3) 1.14%, rgba(65, 48, 90, 0.1) 100%) padding-box;
-  backdrop-filter: blur(170px);
+  backdrop-filter: blur(10px);
   border-radius: 50px;
-  z-index: 999;
+  z-index: 0;
   }
+  
 
 .container{
   padding: 40px;
@@ -152,24 +161,105 @@ ul{
   background-color: var(--neon-purple);
   width: 15vw;
   height: 15vw;
-  top: -15%;
+  top: -13%;
   left: -10%;
   border-radius: 50%;
+  animation: zoomInOutBlobs 6s linear infinite;
 }
-
-
-/* zamiast w neon blobs umiescic w main, dac pozycje absolute i po skrajnych rogach top left 0 0, bottom right 0 0 */
 
 .blue-blob{
   position: absolute;
   background-color: var(--neon-blue);
   width: 15vw;
   height: 15vw;
-  bottom: -15%;
+  bottom: -13%;
   right: -10%;
+  border-radius: 50%;
+  animation: zoomInOutBlobs 6s linear infinite;
+}
+
+.bg-circles{
+  position: fixed;
+  top: 0;
+  height: 100%;
+  max-width: 1200px;
+  width: calc(100% - 30px);
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+.bg-circles div{
+  position: absolute;
   border-radius: 50%;
 }
 
+.bg-circles .circle-1{
+  height: 60px;
+  width: 60px;
+  background-color: var(--neon-green);
+  left: 40%;
+  top: 20%;
+  opacity: 0.9;
+  animation: zoomInOut 12s linear infinite;
+}
+
+.bg-circles .circle-2{
+  height: 60px;
+  width: 60px;
+  background-color: var(--purple);
+  left: 20%;
+  top: 66%;
+  opacity: 0.9;
+  animation: bounceTop 10s linear infinite;
+}
+
+.bg-circles .circle-3{
+  height: 70px;
+  width: 70px;
+  background-color: var(--neon-purple);
+  right: 20%;
+  bottom: 20%;
+  opacity: 0.9;
+  animation: bounceHorizontal 13s linear infinite;
+}
+
+@keyframes zoomInOut{
+  0%, 100%{
+    transform: scale(1.5);
+  }
+  50%{
+    transform: scale(0.5);
+  }
+}
+
+@keyframes bounceTop {
+  0%, 100%{
+    transform: translateY(-150px);
+  }
+  50%{
+    transform: translateY(0%);
+  }
+}
+
+@keyframes bounceHorizontal {
+  0%, 100%{
+    transform: translateX(-200px);
+  }
+  50%{
+    transform: translateX(0%);
+  }
+}
+
+@keyframes zoomInOutBlobs{
+  0%, 100%{
+    opacity: 0.3;
+  }
+  50%{
+    opacity: 1;
+
+  }
+}
 
 
 /* section home */
@@ -178,10 +268,12 @@ ul{
   display: none !important;
 } */
   
+.flex-end{
+  justify-content: flex-end;
+}
 
 .home-section{
   display: flex;
-  padding: 120px 0;
 }
 
 .home-text p{
@@ -210,10 +302,10 @@ ul{
 
 .home-img .img-box{
   display: flex;
-  max-width: 360px;
-  height: 360px;
+  width: 20vw;
+  height: 20vw;
   position: relative;
-  margin: 0 0 0 10vw;
+  margin: 0 0 0 8vw;
   /* margin: auto; */
   border: 6px solid transparent;
   border-radius: 50%;
@@ -227,6 +319,7 @@ ul{
   height: 100%;
   content: '';
   background: linear-gradient(to bottom right, var(--neon-blue), var(--neon-purple)) border-box;
+  background-size: 250% 250%;
   border: inherit;
   border-radius: inherit;
   /* -moz-border-image: -moz-linear-gradient(top left, var(--neon-blue) 0%, var(--neon-purple) 100%);
@@ -236,6 +329,18 @@ ul{
   mask: linear-gradient(white, white) padding-box,
         linear-gradient(white, white);
   mask-composite: exclude;
+  animation: animateGradientBorder 12s linear infinite;
+}
+
+@keyframes animateGradientBorder {
+  0%, 100%{
+    background-position: 0% 0%;
+    /* transform: rotate(0deg); */
+  }
+  50%{
+    background-position: 100% 100%;
+    /* transform: rotate(360deg); */
+  }
 }
 
 .home-img .img-box img{
@@ -355,12 +460,16 @@ ul{
   
 }
 .section-title h2{
+  color: var(--neon-blue);
   font-size: 40px;
   text-transform: capitalize;
 }
+
 .section-padding{
-  padding: 80px 0;
+  margin-top: 12vh;
 }
+
+
 .about-text .timeline{
   position: relative;
 }
@@ -525,6 +634,167 @@ ul{
   text-transform: lowercase;
   color: var(--neon-blue);
 }
+
+/* contact section */
+.contact-form, .contact-info{
+  width: 50%;
+  padding: 0 15px;
+}
+.container .row{
+  width: 100%;
+}
+.contact-form .input-group, .contact-form .input-group textarea{
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.contact-form .input-control{
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  border: none;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: var(--purple);
+  padding: 0 20px;
+  border: 0px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.contact-form .input-control::placeholder{
+  color: var(--dark-purple);
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.contact-form textarea.input-control{
+  padding-top: 15px;
+  height: 250px;
+  resize: none;
+}
+
+.contact-form .input-control:focus{
+  border-color: var(--neon-purple);
+  
+}
+
+.contact-info-item{
+  padding: 0 0 0 20px;
+}
+
+.contact-info-item h3 {
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 0 0 5px;
+}
+
+.contact-info-item .social-links a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  background-color: var(--purple);
+  color: var(--neon-green);
+  border-radius: 50%;
+  margin: 6px 10px 0 0;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contact-info-item .social-links svg path{
+  fill: var(--neon-green);
+  transition: fill 0.3s ease-in-out;
+}
+.contact-info-item .social-links a:hover svg path{
+  fill: var(--purple);
+}
+.contact-info-item .social-links a:hover{
+  background-color: var(--neon-green);
+
+}
+
+/* header */
+.header{
+  width: 100%;
+}
+
+.footer{
+  width: 100%;
+}
+
+.header .container{
+  height: 2vh;
+}
+.header .nav-toggler{
+  width: 50px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--purple);
+  border: 2px solid var(--neon-blue);
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease;
+  z-index: 1;
+}
+.header .nav-toggler:hover{
+  background-color: var(--neon-blue);
+  border: 2px solid var(--purple);
+}
+.header .nav-toggler svg path{
+  fill: var(--neon-blue);
+}
+.header .nav-toggler:hover svg path{
+  fill: var(--purple);
+}
+
+.nav{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 35px 15px;
+  z-index: 1000;
+  opacity: 0;
+}
+
+
+.nav-inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 70px);
+  max-width: 1200px;
+  margin: auto;
+  border: 1px solid var();
+  border-radius: 30px;
+  backdrop-filter: var(--backdrop-filter-blur);
+  background: linear-gradient(110.52deg, rgba(58, 129, 191, 0.3) 1.14%, rgba(65, 48, 90, 0.1) 100%) border-box;
+  padding: 50px 0;
+}
+
+.nav-inner ul li{
+  text-align: center;
+
+}
+
+.nav-inner ul li a{
+  font-size: 40px;
+  text-transform: capitalize;
+  color: var(--neon-blue);
+  display: block;
+  font-weight: 500;
+  padding: 8px 15px;
+  transition: color 0.2s ease-in-out;
+
+}
+.nav-inner ul li a:hover{
+
+  color: var(--neon-green);
+}
+
+
 /* buttons */
 
 button{
@@ -537,6 +807,7 @@ button{
   position: relative;
   display: inline-block;
   line-height: 1.5;
+  text-transform: capitalize;
   font-size: 20px;
   font-weight: 700;
   padding: 20px 35px;
@@ -544,7 +815,7 @@ button{
   overflow: hidden;
   vertical-align: middle;
   margin: 2vh 1vh 0 0;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease-in-out;
 
 }
 
@@ -559,7 +830,7 @@ button{
   mix-blend-mode: hue;
   opacity: 0.6;
   z-index: 1;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease-in-out;
 
 }
 .btn:hover::before{
