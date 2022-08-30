@@ -8,7 +8,7 @@ import gsap from 'gsap'
 const tl = gsap.timeline()
 
 
-function PortfolioSection() {
+function PortfolioSection(props) {
 
     const animateSectionIn = () => {
         tl.from(
@@ -37,16 +37,16 @@ function PortfolioSection() {
 
   return (
     <section className='portfolio-section section-padding'>
-        <Header />
+        <Header data={props.header} languages={props.languages} location={props.location} />
         <NeonBlobs />
         <div className='container'>
             <div className='row'>
                 <div className='section-title'>
-                    <h2>recent projects</h2>
+                    <h2>{props.data.portfolioHeader}</h2>
                 </div>
             </div>
             <div className='row'>
-                <PortfolioItems data={portfolioData}/>
+                <PortfolioItems data={props.data} itemBtn={props.data.itemButton} items={props.items} />
             </div>
         </div>
     </section>

@@ -1,16 +1,26 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import { getCurrentLangKey } from 'ptz-i18n';
 
-function TextSection() {
+function TextSection(props) {
+
+  const url = props.location.pathname;
+  const { langs, defaultLangKey } = props.languages;
+  const langKey = getCurrentLangKey(langs, defaultLangKey, url);
+  const aboutLink = langKey === 'en' ? (`/${langKey}/about`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/about`.replace(`/${defaultLangKey}`, '/'))
+  const portfolioLink = langKey === 'en' ? (`/${langKey}/portfolio`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/portfolio`.replace(`/${defaultLangKey}`, '/'))
+
   return (
     <div className='home-text'>
-        <p>Hello, I'm</p>
-        <h1>Paweł Klejka</h1>
-        <h2> Master of Computer Science, Software Developer, Graphic Designer</h2>
-        <Link to='/about' className='btn btn-primary'>About Me</Link>
-        <Link to='/portfolio' className='btn btn-secondary'>My Projects</Link>
+        <p>{props.data.homeText.paragraph}</p>
+        <h1>{props.data.homeText.headerOne}</h1>
+        <h2>{props.data.homeText.headerTwo}</h2>
+        <Link to={aboutLink} className='btn btn-primary'>{props.data.aboutButton}</Link>
+        <Link to={portfolioLink} className='btn btn-secondary'>{props.data.portfolioButton}</Link>
     </div>
   )
 }
+
+
 
 export default TextSection

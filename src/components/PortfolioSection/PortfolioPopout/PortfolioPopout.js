@@ -6,6 +6,7 @@ import {
   } from '@fortawesome/free-solid-svg-icons'
 
 import gsap from 'gsap'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const tl = gsap.timeline()
 
@@ -70,7 +71,7 @@ function PortfolioPopout(props) {
                         <FontAwesomeIcon icon={faCircleXmark} size="2x" />
                     </button>
                     <div className='popout-thumbnail'>
-                        <img src={props.url} alt="popout-image" />
+                    <GatsbyImage image={props.image.gatsbyImageData} quality={100} />
                     </div>
                     <h3>{props.name}</h3>
                 </div>
@@ -82,7 +83,7 @@ function PortfolioPopout(props) {
                         <ul>
                             <li>Created - <span>{props.date}</span></li>
                             <li>technologies - <span>{props.technologies}</span></li>
-                            <li>role - <span>{props.role}</span></li>
+                            <li>Link - <span><a href={props.url}>{props.name}</a></span></li>
                         </ul>
                     </div>
                 </div>

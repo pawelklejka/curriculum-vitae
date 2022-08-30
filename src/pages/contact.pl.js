@@ -4,18 +4,16 @@ import ContactSection from '../components/ContactSection/ContactSection'
 import { graphql } from "gatsby"
 import Circles from "../components/Common/Decoration/Circles"
 
-
 function contact({data, location}) {
 
   const contentfulContactSection = data.contentfulContactSection
   const header = data.contentfulHeader
   const languages = data.site.siteMetadata.languages
 
-
   return (
       <>
           <Circles />
-          <ContactSection location={location} languages={languages} header={header} data={contentfulContactSection} />
+          <ContactSection location={location} languages={languages} header={header} data={contentfulContactSection}/>
       </>
   )
 }
@@ -24,7 +22,7 @@ export default contact
 
 
 export const data = graphql`
-query ContactSection {
+query ContactSectionPl {
   site {
     siteMetadata {
       languages {
@@ -33,7 +31,7 @@ query ContactSection {
       }      
     }
   }
-  contentfulContactSection(node_locale: {eq: "en-US"}) {
+  contentfulContactSection(node_locale: {eq: "pl"}) {
     contactHeader
     nameField
     emailField
@@ -44,7 +42,7 @@ query ContactSection {
     userPhone
     followHeader
   }
-  contentfulHeader(node_locale: {eq: "en-US"}) {
+  contentfulHeader(node_locale: {eq: "pl"}) {
     homeButton
     aboutButton
     contactButton

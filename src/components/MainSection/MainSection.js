@@ -10,11 +10,13 @@ import gsap from 'gsap'
 const tl = gsap.timeline()
 
 
-const GlassBoard = () => {
+const MainSection = (props) => {
 
 
   const animateSectionIn = () => {
-    tl.from(
+    
+    tl
+    .from(
         '.home-section',
         {
             opacity: 0,
@@ -41,14 +43,14 @@ const GlassBoard = () => {
 
   return (
     <>
-      <main>
+      <main >
         <section className='home-section align-items-center'>
-        <Header />
+        <Header data={props.header} location={props.location} languages={props.languages}/>
         <JavaSVG className="java-icon"/>   
             <NeonBlobs />    
             <div className='container'>
               <div className='row align-items-center'>
-                <TextSection />
+                <TextSection data={props.data} location={props.location} languages={props.languages} />
                 <ImageSection type="home-img"/>
               </div>
             </div>
@@ -60,4 +62,4 @@ const GlassBoard = () => {
 
 }
 
-export default GlassBoard
+export default MainSection

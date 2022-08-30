@@ -22,7 +22,7 @@ function portfolio({data, location}) {
 export default portfolio
 
 export const data = graphql`
-query PortfolioSection {
+query PortfolioSectionPl {
   site {
     siteMetadata {
       languages {
@@ -31,25 +31,25 @@ query PortfolioSection {
       }      
     }
   }
-  contentfulPortfolioSection(node_locale: {eq: "en-US"}) {
+  contentfulPortfolioSection(node_locale: {eq: "pl"}) {
     portfolioHeader
     itemButton
   }
-  allContentfulPortfolioItem(filter: {node_locale: {eq: "en-US"}}) {
+  allContentfulPortfolioItem(filter: {node_locale: {eq: "pl"}}) {
     nodes {
-      title
-      date
-      description{
-        description
-      }
-      technologies
       image {
         gatsbyImageData
         title
       }
+      date
+      description{
+        description
+      }
+      title
+      technologies
     }
   }
-  contentfulHeader(node_locale: {eq: "en-US"}) {
+  contentfulHeader(node_locale: {eq: "pl"}) {
     homeButton
     aboutButton
     contactButton

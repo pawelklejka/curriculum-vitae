@@ -13,7 +13,7 @@ import { Link } from 'gatsby'
 
 const tl = gsap.timeline()
 
-function AboutSection() {
+function AboutSection(props) {
     const [active, setActive] = useState(true)
 
     const onTabClick = () => setActive(!active);
@@ -46,23 +46,25 @@ function AboutSection() {
   return (
     <section className='about-section section-padding'>
         <NeonBlobs />
-        <Header />
+        <Header data={props.header} languages={props.languages} location={props.location} />
         <div className='container'>
             <div className='row'>
                 <div className='section-title'>
-                    <h2>about me</h2>
+                    <h2>{props.data.aboutMeHeader}</h2>
                 </div>
             </div>
             <div className='row'>
                     <ImageSection type={'about-img'}/>
                 <div className='about-text'>
                     
-                    <Skills data={skillsData}/>
-                    <AboutTabs active={active} onTabClick={onTabClick}/>
-                    <TabContent active={active} data={educationData}/>
-                    <TabContent active={!active} data={experienceData}/>
-                    <a href='#' className='btn btn-primary'>download CV</a>
-                    <Link to='/contact' className='btn btn-primary'>contact me</Link>
+                    <Skills data={props.data} skills={props.skills}/>
+                    <AboutTabs active={active} onTabClick={onTabClick} data={props.data}/>
+                    <TabContent active={active} data={props.data.educationTab}/>
+                    <TabContent active={!active} data={props.data.experienceTab}/>
+                    <div className='btn-group'>
+                        <a href={props.data.cvPdf.url} className='btn btn-primary' download={true}>{props.data.downloadButton}</a>
+                        <Link to='/contact' className='btn btn-primary'>{props.data.contactButton}</Link>
+                    </div>
                 </div>
 
             </div>

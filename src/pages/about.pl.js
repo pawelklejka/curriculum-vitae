@@ -11,11 +11,10 @@ function about({data, location}) {
   const languages = data.site.siteMetadata.languages
   const skills = data.contentfulSkills
 
-
   return (
     <>
     <Circles />
-    <AboutSection header={header} data={contentfulAboutSection} skills={skills.skillsList} location={location} languages={languages}/>
+    <AboutSection header={header} data={contentfulAboutSection} skills={skills.skillsList} location={location} languages={languages} />
     
     </>
   )
@@ -24,7 +23,7 @@ function about({data, location}) {
 export default about
 
 export const data = graphql`
-query AboutSection {
+query AboutSectionPl {
   site {
     siteMetadata {
       languages {
@@ -33,13 +32,13 @@ query AboutSection {
       }      
     }
   }
-  contentfulHeader(node_locale: {eq: "en-US"}) {
+  contentfulHeader(node_locale: {eq: "pl"}) {
     aboutButton
     contactButton
     homeButton
     portfolioButton
   }
-  contentfulAboutSection(node_locale: {eq: "en-US"}) {
+  contentfulAboutSection(node_locale: {eq: "pl"}) {
     aboutMeHeader
     contactButton
     experienceTabBtn

@@ -2,12 +2,19 @@ import React, { useEffect } from 'react'
 import gsap from 'gsap'
 import * as ReactDOM from 'react-dom'
 import {Link} from 'gatsby'
+import { getCurrentLangKey } from 'ptz-i18n';
+
 
 const tl = gsap.timeline()
 
 function NavigationSection(props) {
-
-  
+  const url = props.location.pathname
+  const { langs, defaultLangKey } = props.languages;
+  const langKey = getCurrentLangKey(langs, defaultLangKey, url);
+  const aboutLink = langKey === 'en' ? (`/${langKey}/about`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/about`.replace(`/${defaultLangKey}`, '/'))
+  const portfolioLink = langKey === 'en' ? (`/${langKey}/portfolio`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/portfolio`.replace(`/${defaultLangKey}`, '/'))
+  const contactLink = langKey === 'en' ? (`/${langKey}/contact`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/contact`.replace(`/${defaultLangKey}`, '/'))
+  const mainLink = langKey === 'en' ? (`/${langKey}/`.replace(`/${defaultLangKey}`, '')) : (`/${langKey}/`.replace(`/${defaultLangKey}`, '/'))
 
   
   const animateInMenu = () => {
@@ -44,10 +51,10 @@ function NavigationSection(props) {
     <nav className='nav' onClick={onClickCloseMenu}>
         <div className='nav-inner' onClick={e => e.stopPropagation()}>
             <ul>
-                <li><Link to='/' className='nav-item'>Home</Link></li>
-                <li><Link to='/about' className='nav-item'>About</Link></li>
-                <li><Link to='/portfolio' className='nav-item'>Portfolio</Link></li>
-                <li><Link to='/contact' className='nav-item'>Contact</Link></li>
+                <li><Link to={mainLink} className='nav-item'>{props.data.homeButton}</Link></li>
+                <li><Link to={aboutLink} className='nav-item'>{props.data.aboutButton}</Link></li>
+                <li><Link to={portfolioLink} className='nav-item'>{props.data.portfolioButton}</Link></li>
+                <li><Link to={contactLink} className='nav-item'>{props.data.contactButton}</Link></li>
             </ul>
         </div>
     </nav>,

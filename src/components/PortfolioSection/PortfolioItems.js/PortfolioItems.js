@@ -4,9 +4,9 @@ import PortfolioItem from './PortfolioItem/PortfolioItem'
 function PortfolioItems(props) {
   return (
     <>
-    {props.data.map((item, index)=> {
+    {props.items.map((item, index)=> {
       return(
-        <PortfolioItem key={index} url={item.url} title={item.title} description={item.description} date={item.date} technologies={item.technologies} role={item.technologies}/>
+        <PortfolioItem key={index} url={item.url} title={item.title} description={item.description} date={item.date} technologies={item.technologies} role={item.technologies} itemBtn={props.itemBtn} image={item.image} />
       )
     })}
     
