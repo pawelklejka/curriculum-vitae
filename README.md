@@ -1,3 +1,11 @@
+### Link do strony:
+https://pawelklejka-cv.pl
+
+
+![Desktop - 5](https://user-images.githubusercontent.com/24233415/196948655-4e042fa0-675a-49a9-8c92-6c10ade56505.png)
+
+
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
